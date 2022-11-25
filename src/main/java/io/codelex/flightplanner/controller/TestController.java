@@ -1,4 +1,4 @@
-package io.codelex.flightplanner;
+package io.codelex.flightplanner.controller;
 
 import io.codelex.flightplanner.FlightService;
 import org.apache.coyote.Response;

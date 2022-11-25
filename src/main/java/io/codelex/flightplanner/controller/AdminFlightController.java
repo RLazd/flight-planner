@@ -1,15 +1,13 @@
-package io.codelex.flightplanner;
+package io.codelex.flightplanner.controller;
 
-import io.codelex.flightplanner.Flight;
-import io.codelex.flightplanner.FlightRequest;
+import io.codelex.flightplanner.domain.Flight;
+import io.codelex.flightplanner.dto.AddFlightRequest;
 import io.codelex.flightplanner.FlightService;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
-import java.util.InputMismatchException;
 
 @RestController
 @RequestMapping("/admin-api")
@@ -23,13 +21,18 @@ public class AdminFlightController {
 
     @PutMapping(path = "/flights")
     @ResponseStatus(HttpStatus.CREATED)
-    public Flight addFlight(@Valid @RequestBody FlightRequest request, Errors errors) {
-        Flight flight = new Flight(request.getFrom(), request.getTo(), request.getCarrier(),
-                request.getDepartureTime(), request.getArrivalTime());
+    public Flight addFlight(@Valid @RequestBody AddFlightRequest request) {
+        Flight flight;
+        try {
+            flight = new Flight(request.getFrom(), request.getTo(), request.getCarrier(),
+                    request.getDepartureTime(), request.getArrivalTime());
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "failed to add", new Exception());
+        }
 
-        flightService.addFlight(flight, errors);
-
+        flightService.addFlight(flight);
         return flight;
+
     }
 
     @DeleteMapping("/flights/{id}")

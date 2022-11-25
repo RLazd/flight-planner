@@ -1,7 +1,6 @@
-package io.codelex.flightplanner;
+package io.codelex.flightplanner.domain;
 
 import javax.validation.constraints.NotEmpty;
-import java.util.Objects;
 
 public class Airport {
     @NotEmpty

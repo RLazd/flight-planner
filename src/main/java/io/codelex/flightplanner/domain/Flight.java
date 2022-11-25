@@ -1,8 +1,7 @@
-package io.codelex.flightplanner;
+package io.codelex.flightplanner.domain;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 import java.util.UUID;
 
 public class Flight {

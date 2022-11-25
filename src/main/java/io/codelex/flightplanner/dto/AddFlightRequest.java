@@ -1,10 +1,12 @@
-package io.codelex.flightplanner;
+package io.codelex.flightplanner.dto;
+
+import io.codelex.flightplanner.domain.Airport;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 
-public class FlightRequest {
+public class AddFlightRequest {
     @Valid
     @NotNull
     private Airport from;
@@ -22,7 +24,7 @@ public class FlightRequest {
     @NotEmpty
     private String arrivalTime;
 
-    public FlightRequest(Airport from, Airport to, String carrier, String departureTime, String arrivalTime) {
+    public AddFlightRequest(Airport from, Airport to, String carrier, String departureTime, String arrivalTime) {
         this.from = from;
         this.to = to;
         this.carrier = carrier;
