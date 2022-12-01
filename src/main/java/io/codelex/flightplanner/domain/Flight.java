@@ -1,18 +1,31 @@
 package io.codelex.flightplanner.domain;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
+@Entity
+@Table(name = "flights")
 public class Flight {
+    @Id
     private String id;
+    @JoinColumn(name = "from_airport_id", referencedColumnName = "id")
+    @ManyToOne
     private Airport from;
+    @JoinColumn(name = "to_airport_id", referencedColumnName = "id")
+    @ManyToOne
     private Airport to;
     private String carrier;
     private String departureTime;
     private String arrivalTime;
+    @Transient
     private final DateTimeFormatter FORMATTER_WITH_TIME = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    @Transient
     private final DateTimeFormatter FORMATTER_WITHOUT_TIME = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    public Flight() {
+    }
 
     public Flight(Airport from, Airport to, String carrier, String departureTime, String arrivalTime) {
         this.id = UUID.randomUUID().toString();

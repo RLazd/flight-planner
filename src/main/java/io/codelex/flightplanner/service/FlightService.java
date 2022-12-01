@@ -1,10 +1,9 @@
-package io.codelex.flightplanner;
+package io.codelex.flightplanner.service;
 
 import io.codelex.flightplanner.domain.Airport;
 import io.codelex.flightplanner.domain.Flight;
 import io.codelex.flightplanner.dto.PageResult;
 import io.codelex.flightplanner.dto.SearchFlightsRequest;
-import org.springframework.validation.Errors;
 
 import java.util.List;
 

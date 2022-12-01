@@ -1,5 +1,6 @@
 package io.codelex.flightplanner;
 
+import io.codelex.flightplanner.domain.Flight;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

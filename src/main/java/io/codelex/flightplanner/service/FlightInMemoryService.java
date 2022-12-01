@@ -1,13 +1,13 @@
-package io.codelex.flightplanner;
+package io.codelex.flightplanner.service;
 
 import io.codelex.flightplanner.domain.Airport;
 import io.codelex.flightplanner.domain.Flight;
 import io.codelex.flightplanner.dto.PageResult;
 import io.codelex.flightplanner.dto.SearchFlightsRequest;
+import io.codelex.flightplanner.repository.FlightInMemoryRepository;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.Errors;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
@@ -26,11 +26,6 @@ public class FlightInMemoryService implements FlightService {
 
     @Override
     public synchronized void addFlight(Flight flight) {
-//
-//        if (errors.hasErrors()) {
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "failed to add", new Exception());
-//        }
-
         if (repository.getFlights()
                 .stream()
                 .anyMatch(f -> f.equals(flight))) {
