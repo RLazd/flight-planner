@@ -1,14 +1,8 @@
 package io.codelex.flightplanner.controller;
 
-import io.codelex.flightplanner.FlightService;
-import org.apache.coyote.Response;
+import io.codelex.flightplanner.service.FlightService;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.http.HttpResponse;
-import java.util.List;
 
 @RestController
 @RequestMapping("/testing-api")

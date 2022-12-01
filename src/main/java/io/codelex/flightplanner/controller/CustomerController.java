@@ -1,6 +1,6 @@
 package io.codelex.flightplanner.controller;
 
-import io.codelex.flightplanner.*;
+import io.codelex.flightplanner.service.FlightService;
 import io.codelex.flightplanner.domain.Airport;
 import io.codelex.flightplanner.domain.Flight;
 import io.codelex.flightplanner.dto.PageResult;
